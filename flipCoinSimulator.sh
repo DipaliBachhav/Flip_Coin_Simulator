@@ -58,3 +58,75 @@ per_HH=$((($HH*100)/10))
 per_HT=$((($HT*100)/10))
 per_TH=$((($TH*100)/10))
 per_TT=$((($TT*100)/10))
+
+#Triplet Combination
+HHH=0
+HHT=0
+THH=0
+HTH=0
+THT=0
+TTT=0
+TTH=0
+HTT=0
+flipCoin=10
+count=0
+declare -A triplet
+while [ $count -lt $flipCoin ]
+do
+        coin1=$(( RANDOM%2 ))
+        coin2=$(( RANDOM%2 ))
+	coin3=$(( RANDOM%2 ))
+
+                if [[ $coin1 -eq 1 && $coin2 -eq 1 && $coin3 -eq 1 ]]
+                then
+                        (( HHH++ ))
+
+                elif [[ $coin1 -eq 1 && $coin2 -eq 1 && $coin3 -eq 0 ]]
+		then
+                        (( HHT++ ))
+
+                elif [[ $coin1 -eq 1 && $coin2 -eq 0 && $coin3 -eq 1 ]]
+                then
+                        (( HTH++ ))
+
+		elif [[ $coin1 -eq 0 && $coin2 -eq 1 && $coin3 -eq 1 ]]
+                then
+                        (( THH++ ))
+
+    		elif [[ $coin1 -eq 0 && $coin2 -eq 1 && $coin3 -eq 0 ]]
+                then
+                        (( THT++ ))
+
+    		elif [[ $coin1 -eq 1 && $coin2 -eq 0 && $coin3 -eq 0 ]]
+                then
+                        (( HTT++ ))
+
+		elif [[ $coin1 -eq 0 && $coin2 -eq 0 && $coin3 -eq 1 ]]
+                then
+                        (( TTH++ ))
+
+                else
+                        (( TTT++ ))
+                fi
+(( count++ ))
+done
+triplet[0]=$HHH
+triplet[1]=$HHT
+triplet[2]=$HTH
+triplet[3]=$THH
+triplet[4]=$THT
+triplet[5]=$TTT
+triplet[6]=$TTH
+triplet[7]=$HTT
+
+echo "Keys := ${!triplet[@]}" " Values := ${triplet[@]}"
+
+per_HHH=$((($HHH*100)/10))
+per_HHT=$((($HHT*100)/10))
+per_HTH=$((($HTH*100)/10))
+per_THH=$((($THH*100)/10))
+per_THT=$((($THT*100)/10))
+per_TTT=$((($TTT*100)/10))
+per_TTH=$((($TTH*100)/10))
+per_HTT=$((($HTT*100)/10))
+
