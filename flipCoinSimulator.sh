@@ -130,3 +130,9 @@ per_TTT=$((($TTT*100)/10))
 per_TTH=$((($TTH*100)/10))
 per_HTT=$((($HTT*100)/10))
 
+echo "Singlet Sorting :="
+sort -n <(printf "%s\n" "${dictionary[@]}")
+echo "Doublet Sorting :="
+sort -n <(printf "%s\n" "${doublet[@]}")
+echo "Triplet Sorting :="
+sort -n <(printf "%s\n" "${triplet[@]}")
