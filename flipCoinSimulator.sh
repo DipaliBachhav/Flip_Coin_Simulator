@@ -36,7 +36,7 @@ function combination(){
 function percentageFind(){
    for key in ${!dictionary[@]}
    {
-      percentage=$((${dictionary[$keys]}))/$flipCoin*100
+      percentage=$((${dictionary[$coin]}))/$flipCoin*100
       echo  "$key =  $percentage"
    }
 }
